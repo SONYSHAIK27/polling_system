@@ -5,6 +5,13 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const Poll = require('./models/Poll');
 
+// Load environment variables
+require('dotenv').config();
+
+console.log('Starting Polling System Backend...');
+console.log('Node.js version:', process.version);
+console.log('Environment:', process.env.NODE_ENV || 'development');
+
 const app = express();
 const server = http.createServer(app);
 
@@ -39,11 +46,16 @@ app.get('/', (req, res) => {
 });
 
 // Connect to MongoDB Atlas
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://sonyshaik027:S0ny027%40@cluster0.zitqgzq.mongodb.net/livepolling?retryWrites=true&w=majority&appName=Cluster0', {
-    serverSelectionTimeoutMS: 20000 
+const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://sonyshaik027:S0ny027%40@cluster0.zitqgzq.mongodb.net/livepolling?retryWrites=true&w=majority&appName=Cluster0';
+
+console.log('Connecting to MongoDB...');
+mongoose.connect(mongoUri, {
+    serverSelectionTimeoutMS: 20000,
+    connectTimeoutMS: 20000,
+    socketTimeoutMS: 20000
 })
 .then(() => {
-    console.log('MongoDB connected');
+    console.log('✅ MongoDB connected successfully');
 
     let currentPoll = null;
     let currentPollDoc = null; // MongoDB document for the current poll
@@ -317,11 +329,25 @@ Could you rephrase your question or ask about something specific I can help with
     });
 
     server.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
+        console.log(`🚀 Server running on port ${PORT}`);
+        console.log(`📡 WebSocket server ready for connections`);
+        console.log(`🌐 Health check available at: http://localhost:${PORT}/`);
     });
 })
 .catch((error) => {
-    console.error('MongoDB connection error:', error);
+    console.error('❌ MongoDB connection error:', error);
+    console.error('Please check your MongoDB connection string and network access');
+    process.exit(1);
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (error) => {
+    console.error('❌ Uncaught Exception:', error);
+    process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
     process.exit(1);
 });
 
