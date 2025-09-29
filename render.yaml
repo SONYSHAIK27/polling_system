@@ -1,0 +1,30 @@
+services:
+  # Backend Service
+  - type: web
+    name: poll-system-backend
+    env: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: poll-system-db
+          property: connectionString
+    healthCheckPath: /
+    
+  # Frontend Service  
+  - type: web
+    name: poll-system-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_SERVER_URL
+        fromService:
+          type: web
+          name: poll-system-backend
+          property: host
