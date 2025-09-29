@@ -12,6 +12,7 @@ const server = http.createServer(app);
 const corsOptions = {
   origin: [
     "http://localhost:3000",
+    "https://poll-system-frontend.onrender.com", // Add your frontend URL here
     /^https:\/\/.*\.onrender\.com$/,
     /^https:\/\/.*\.netlify\.app$/,
     /^https:\/\/.*\.vercel\.app$/
