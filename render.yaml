@@ -4,27 +4,22 @@ services:
     name: poll-system-backend
     env: node
     plan: free
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm start
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
       - key: MONGODB_URI
-        fromDatabase:
-          name: poll-system-db
-          property: connectionString
+        value: mongodb+srv://sonyshaik027:S0ny027%40@cluster0.zitqgzq.mongodb.net/livepolling?retryWrites=true&w=majority&appName=Cluster0
     healthCheckPath: /
     
   # Frontend Service  
-  - type: web
+  - type: static
     name: poll-system-frontend
-    env: static
     plan: free
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
     envVars:
       - key: REACT_APP_SERVER_URL
-        fromService:
-          type: web
-          name: poll-system-backend
-          property: host
+        value: https://poll-system-backend.onrender.com
