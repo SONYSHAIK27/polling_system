@@ -18,6 +18,7 @@ services:
   - type: static
     name: poll-system-frontend
     plan: free
+    rootDir: client
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
     envVars:
