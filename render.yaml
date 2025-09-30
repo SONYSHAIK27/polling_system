@@ -4,6 +4,7 @@ services:
     name: poll-system-backend
     env: node
     plan: free
+    nodeVersion: 18
     rootDir: server
     buildCommand: npm install
     startCommand: npm start
@@ -18,9 +19,9 @@ services:
   - type: static
     name: poll-system-frontend
     plan: free
-    rootDir: client
-    buildCommand: npm install && npm run build
-    staticPublishPath: build
+    nodeVersion: 20
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: client/build
     envVars:
       - key: REACT_APP_SERVER_URL
         value: https://poll-system-backend.onrender.com
