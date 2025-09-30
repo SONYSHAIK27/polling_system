@@ -28,5 +28,5 @@ services:
       - key: NODE_ENV
         value: production
       - key: REACT_APP_SERVER_URL
-        value: https://poll-system-backend.onrender.com
+        value: https://poll-system-backend-8j3s.onrender.com
     healthCheckPath: /

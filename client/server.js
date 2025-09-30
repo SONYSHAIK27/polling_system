@@ -21,11 +21,12 @@ app.get('*', (req, res) => {
   if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath);
   } else {
-    res.status(500).send('React app build not found. Please check the build process.');
+    res.status(500).send('🚨 REACT FRONTEND BUILD NOT FOUND! This should be the React app, not the backend. Please check the build process.');
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Frontend server is running on port ${PORT}`);
-  console.log(`Serving files from: ${buildPath}`);
+  console.log(`🚀 FRONTEND server is running on port ${PORT}`);
+  console.log(`📁 Serving files from: ${buildPath}`);
+  console.log(`🌐 This is the REACT FRONTEND service`);
 });
