@@ -4,6 +4,11 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Add a distinctive test route
+app.get('/test', (req, res) => {
+  res.send('🎯 THIS IS THE FRONTEND SERVER - If you see this, the frontend is working!');
+});
+
 // Check if build directory exists
 const buildPath = path.join(__dirname, 'build');
 const indexPath = path.join(buildPath, 'index.html');
@@ -21,7 +26,7 @@ app.get('*', (req, res) => {
   if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath);
   } else {
-    res.status(500).send('🚨 REACT FRONTEND BUILD NOT FOUND! This should be the React app, not the backend. Please check the build process.');
+    res.status(500).send('🚨 REACT FRONTEND BUILD NOT FOUND! This should be the React app, not the backend. Please check the build process. Visit /test to verify this is the frontend server.');
   }
 });
 
