@@ -1,0 +1,29 @@
+{
+  "name": "poll-system",
+  "version": "1.0.0",
+  "description": "Live Polling System with Socket.IO and MongoDB",
+  "main": "server/index.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "start": "cd server && node index.js",
+    "dev": "cd server && node index.js",
+    "build": "echo 'No build step required for Node.js'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "build-client": "cd client && npm run build"
+  },
+  "keywords": ["polling", "real-time", "socket.io", "express", "react"],
+  "author": "SONYSHAIK27",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.2",
+    "socket.io": "^4.8.1"
+  }
+}
