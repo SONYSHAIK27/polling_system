@@ -44,4 +44,5 @@ app.listen(PORT, () => {
   console.log(`🚀 FRONTEND server is running on port ${PORT}`);
   console.log(`📁 Serving files from: ${buildPath}`);
   console.log(`🌐 This is the REACT FRONTEND service`);
+  console.log(`🔍 If you see "Polling System Backend is running" on this URL, there's a routing issue!`);
 });
