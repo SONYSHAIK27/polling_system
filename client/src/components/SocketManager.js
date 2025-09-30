@@ -12,7 +12,7 @@ export const SocketManager = ({ children }) => {
   useEffect(() => {
     // Use local server for development, deployed server for production
     const serverUrl = process.env.NODE_ENV === 'production' 
-      ? process.env.REACT_APP_SERVER_URL || "https://your-app-name.onrender.com"
+      ? process.env.REACT_APP_SERVER_URL || "https://poll-system-backend-8j3s.onrender.com"
       : "http://localhost:5000";
     const newSocket = io(serverUrl, {
       transports: ['polling', 'websocket'],
