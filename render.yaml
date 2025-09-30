@@ -16,17 +16,12 @@ services:
     healthCheckPath: /
     
   # Frontend Service  
-  - type: web
+  - type: static
     name: poll-system-frontend
-    env: node
-    plan: free
-    nodeVersion: 20
-    rootDir: client
-    buildCommand: npm ci && npm run build
-    startCommand: npm run serve
+    buildCommand: cd client && npm ci && npm run build
+    staticPublishPath: client/build
     envVars:
       - key: NODE_ENV
         value: production
       - key: REACT_APP_SERVER_URL
         value: https://poll-system-backend-8j3s.onrender.com
-    healthCheckPath: /
