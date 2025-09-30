@@ -1,0 +1,25 @@
+{
+  "name": "poll-system-backend",
+  "version": "1.0.0",
+  "description": "Live Polling System Backend with Socket.IO and MongoDB",
+  "main": "index.js",
+  "engines": {
+    "node": "18.19.0",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["polling", "real-time", "socket.io", "express"],
+  "author": "SONYSHAIK27",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.2",
+    "socket.io": "^4.8.1"
+  }
+}

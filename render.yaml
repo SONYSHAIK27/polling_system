@@ -5,7 +5,7 @@ services:
     env: node
     plan: free
     nodeVersion: 18
-    rootDir: .
+    rootDir: server
     buildCommand: npm install
     startCommand: npm start
     envVars:
